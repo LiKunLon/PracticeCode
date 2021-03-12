@@ -239,6 +239,5 @@ namespace Helloworld
             Console.WriteLine("和={0}", sum);
             Console.ReadLine();
         }
-
     }
 }
