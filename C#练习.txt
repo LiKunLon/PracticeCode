@@ -1,0 +1,244 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Collections;
+
+namespace Helloworld
+{
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        Console.WriteLine("HelloWorld!");
+    //        //Console.ReadLine();
+    //        int a = 10;
+    //        byte b = 24;
+    //        float c = 1.1f;
+    //        double d = 2.5d;
+    //        Console.WriteLine("c={0}", c);
+    //        Console.WriteLine("d={0}", d);
+    //        Console.WriteLine("a={0}", a);
+    //        Console.WriteLine("b={0}", b);
+    //        Console.ReadLine();
+    //    }
+    //}
+
+    //class Program
+    //{
+    //    class test
+    //    {
+    //        public int value = 0;
+    //    }
+    //    static void Main(String[] args)
+    //    {
+    //        int v1 = 0;
+    //        int v2 = 99;
+    //        test r1 = new test();
+    //        test r2 = r1;
+    //        r2.value = 112;
+    //        Console.WriteLine("v1={0},v2={1}", v1, v2);
+    //        Console.WriteLine("r1={0},v2={1}", r1.value, r2.value);
+    //        Console.ReadLine();
+    //    }
+    //}
+    class Program
+    {
+        //static void Main(String[] args)
+        //{
+        //    int[] num = new int[6] { 1, 2, 3, 4, 5, 6 };
+        //    int i = 0;
+        //    while (i < num.Length)
+        //    {
+        //        Console.WriteLine("num[{0}]的值={1}", i, num[i]);
+        //        i++;
+            
+        //    }
+        //    Console.ReadLine();
+        //}
+
+        //for 循环打印
+        //static void Main(String[] args)
+        //{
+        //    int[] nums = new int[5] { 1, 2, 3, 4, 5 };
+        //    for (int i = 0; i < nums.Length; i++)
+        //    {
+        //        Console.WriteLine("nums[{0}]的值={1}",i,nums[i]);
+        //    }
+        //    Console.ReadLine();
+        //}
+
+        //foreach循环打印
+        //static void Main(String[] args)
+        //{
+        //    ArrayList list = new ArrayList();
+        //    list.Add("hello");
+        //    list.Add("world");
+        //    list.Add("love");
+        //    list.Add("you");
+        //    foreach (string words in list)
+        //    {
+        //        Console.WriteLine(words);
+        //    }
+        //    Console.ReadLine();
+        //}
+
+        //stwich语句
+        //static void Main(String[] args)
+        //{
+        //    Console.WriteLine("请输入1-7对应周几:\n");
+        //    int i = Convert.ToInt32(DateTime.Today.DayOfWeek);//获取当前日期的数值
+        //    switch (i)
+        //    {
+        //        case 1: Console.WriteLine("星期一!"); break;
+        //        case 2: Console.WriteLine("星期二!"); break;
+        //        case 3: Console.WriteLine("星期三!"); break;
+        //        case 4: Console.WriteLine("星期四1"); break;
+        //        case 5: Console.WriteLine("星期五!"); break;
+        //        case 6: Console.WriteLine("星期六!"); break;
+        //        case 7: Console.WriteLine("星期七!"); break;
+                
+        //    }
+        //    Console.ReadLine();
+        //}
+        
+
+        //输出0-20的奇数
+        //static void Main(String[] args)
+        //{
+        //    for (int i = 0; i < 20; i++)
+        //    {
+        //        if (i % 2 != 0)
+        //        {
+        //            Console.WriteLine(i + " ");
+        //        }
+        //    }
+        //    Console.ReadLine();
+        //}
+
+        //利用for循环求1-100的奇数和,偶数和
+        //static void Main(String[] args)
+        //{
+        //    int sum1 = 0;
+        //    int sum2 = 0;
+        //    for (int i = 1; i < 100; i++)
+        //    {
+                
+        //        //偶数和
+        //        if (i % 2 == 0)
+        //        {
+        //            sum1 += i;
+                    
+        //        }
+        //        //奇数和
+        //        if (i % 2 != 0)
+        //        {
+        //            sum2 += i;
+                   
+        //        }
+        //    }
+        //    Console.WriteLine(sum2 + " ");
+        //    Console.WriteLine(sum1 + " ");
+        //    Console.ReadLine();
+        //}
+        //
+
+        //利用while循环求出1-100的奇偶数和
+        //static void Main(String[] args)
+        //{
+        //    int i = 100;
+        //    int sum1 = 0;
+        //    int sum2 = 0;
+        //    while (i >= 1)
+        //    {
+        //        //偶数和
+        //        if (i % 2 == 0)
+        //        {
+        //            sum1 += i;
+        //        }
+        //        //奇数和
+        //        if (i % 2 != 0)
+        //        {
+        //            sum2 += i;
+        //        }
+        //        i--;
+        //    }
+        //    Console.WriteLine("偶数和={0}", sum1);
+        //    Console.WriteLine("奇数和={0}", sum2);
+        //    Console.ReadLine();
+        //} 
+
+        //利用do...while语句求出1-100的奇偶数和(有问题)
+        //static void Main(String[] args)
+        //{
+        //    int i = 100;
+        //    int sum1 = 0;
+        //    int sum2 = 0;
+        //    do
+        //    {
+        //        if (i % 2 == 0)
+        //        {
+        //            sum1 += i;
+        //        }
+        //        if (i % 2 != 0)
+        //        {
+        //            sum2 += i;
+        //        }
+                
+        //    } while (i >= 1);
+        //    Console.WriteLine(sum1 + " ");
+        //    Console.WriteLine(sum2 + " ");
+        //    Console.ReadLine();
+        //}
+
+        //水仙花数
+        //static void Main(String[] args)
+        //{
+            
+        //    for (int i = 0; i < 100000; i++)
+        //    {
+        //        int num = 0;//计数器
+        //        int n = i;
+        //        int sum = 0;
+        //        //求这个数是几位数
+        //        while (n != 0)
+        //        {
+        //            n = n / 10;
+        //            num++;
+        //        }
+        //        //n在改变,给n重新赋值
+        //        n = i;
+                
+        //        while (n != 0)
+        //        {
+        //            sum += (int)Math.Pow(n % 10, num);
+        //            n = n / 10;
+        //        }
+        //        if(sum==i){
+        //            Console.WriteLine("{0}",i);
+        //        }
+               
+        //    }
+        //    Console.ReadLine();
+        //}
+
+        //1!+2!+3!+...20!
+        static void Main(String[] args)
+        {
+            int sum = 0;
+            for (int n = 1; n <= 20; ++n)
+            {
+                int ret = 1;               
+                for (int i = 1; i <= n; i++)
+                {
+                    ret = ret * i;
+                }
+                sum = sum + ret;
+            }
+            Console.WriteLine("和={0}", sum);
+            Console.ReadLine();
+        }
+
+    }
+}
