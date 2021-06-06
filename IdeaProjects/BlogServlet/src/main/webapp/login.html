@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function myclk(type) {
+            var username=jQuery("#username");
+            var password=jQuery("#password");
+            //清空
+            if(type==2){
+                if(confirm("确定清空吗?")){
+                    username.val("");
+                    password.val("");
+                    username.focus();
+                }
+                return false;
+            }else{
+                //非空效验
+                if(username.val().trim()==""){
+                    alert("账号没输入呢!");
+                    username.focus();
+                    return false;
+                }
+                if(password.val().trim()==""){
+                    alert("密码没输入呢!");
+                    password.focus();
+                    return false;
+                }
+                //请求后端接口
+                jQuery.getJSON("login",
+                    {
+                        "username":username.val(),
+                        "password":password.val()
+                    },
+                    function (data) {
+                    if(data!=null && data.succ==1){
+                        location.href = "myarticle.html";
+                        //alert("success!")
+                    }else{
+                        alert("登陆失败!"+data.msg);
+                    }
+                    })
+            }
+        }
+    </script>
+</head>
+<body>
+<div style="margin-top: 70px;text-align: center">
+    <h1>登录</h1>
+    账号:<input id="username" name="username" type="text"><p></p>
+    密码:<input id="password" name="password" type="password" ><p></p>
+    <input type="button" value="提 交" onclick="myclk(1)">
+    <input type="button" value="清 空" onclick="myclk(2)">
+
+</div>
+
+</body>
+</html>
