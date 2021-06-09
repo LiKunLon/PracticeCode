@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Connection:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Connection_jar</output-path>
+    <root id="archive" name="Connection.jar">
+      <element id="module-output" name="Connection" />
+    </root>
+  </artifact>
+</component>
