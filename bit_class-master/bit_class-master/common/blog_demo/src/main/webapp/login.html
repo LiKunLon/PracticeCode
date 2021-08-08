@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录页面</title>
+    <style>
+        input {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        function mysub() {
+            var username = jQuery("#username");
+            var pwd = jQuery("#pwd");
+            if (username.val().trim() == "") {
+                alert("请先输入姓名!");
+                username.focus();
+                return false;
+            }
+            if (pwd.val().trim() == "") {
+                alert("请先输入密码!");
+                pwd.focus();
+                return false;
+            }
+            jQuery.getJSON("login", {
+                "username": username.val().trim(),
+                "pwd": pwd.val().trim()
+            }, function (result) {
+                if (result != null && result.succ == 1) {
+                    window.location = "main.html";
+                } else {
+                    alert("抱歉:用户名或密码错误,请重试!");
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div style="margin-top: 150px;text-align: center;">
+    <h1>登录</h1>
+    姓名:<input id="username" type="text"><br>
+    密码:<input id="pwd" type="password"><br>
+    <input type="button" value=" 提 交 " onclick="mysub()">
+</div>
+</body>
+</html>

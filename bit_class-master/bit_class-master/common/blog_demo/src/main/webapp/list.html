@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>文章列表页面</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        var pagesize = 2;
+        var currpage = 1;
+        jQuery(function () {
+            jQuery.getJSON("list", {"psize": pagesize, "csize": currpage, "type": 1}, function (result) {
+                var html = "";
+                if (result != null && result.length > 0) {
+                    for (var i = 0; i < result.length; i++) {
+                        html += "<tr>\n" +
+                            "        <td>" + result[i].id + "</td>\n" +
+                            "        <td><a href='details.html?id=" + result[i].id
+                            + "'>" + result[i].title + "</a></td>\n" +
+                            "        <td>" + result[i].desc + "</td>\n" +
+                            "        <td>" + result[i].uid + "</td>\n" +
+                            "        <td>" + result[i].createtime + "</td>\n" +
+                            "    </tr>";
+                    }
+                    jQuery("#listTab").append(html);
+                }
+            });
+        });
+
+        // 分页
+        function mypage(type) {
+            // 初始化 table
+            jQuery("#listTab").html("<tr>\n" +
+                "        <td>序号</td>\n" +
+                "        <td>标题</td>\n" +
+                "        <td>简介</td>\n" +
+                "        <td>作者</td>\n" +
+                "        <td>发布时间</td>\n" +
+                "    </tr>");
+            jQuery.getJSON("list", {"psize": pagesize, "csize": currpage, "type": type}, function (result) {
+                // 拼接 table
+                var html = "";
+                if (result != null && result.length > 0) {
+                    jQuery("#rmsg").html("");
+                    for (var i = 0; i < result.length; i++) {
+                        html += "<tr>\n" +
+                            "        <td>" + result[i].id + "</td>\n" +
+                            "        <td><a href='details.html?id=" + result[i].id
+                            + "'>" + result[i].title + "</a></td>\n" +
+                            "        <td>" + result[i].desc + "</td>\n" +
+                            "        <td>" + result[i].uid + "</td>\n" +
+                            "        <td>" + result[i].createtime + "</td>\n" +
+                            "    </tr>";
+                    }
+                    jQuery("#listTab").append(html);
+                    if (type == 2) {
+                        currpage--;
+                    } else if (type == 3) {
+                        currpage++;
+                    } else if (type == 1) {
+                        currpage = 1;
+                    }
+                } else {
+                    jQuery("#rmsg").html("暂无数据");
+                }
+            });
+        }
+
+    </script>
+</head>
+<body>
+<div id="udiv" style="width: 100%;text-align: right;">
+    <a href="login.html">登录</a>&nbsp;<a href="register.html">注册</a>
+</div>
+<h1>文章列表</h1>
+<table id="listTab" border="1" cellspacing="0" width="80%">
+    <tr>
+        <td>序号</td>
+        <td>标题</td>
+        <td>简介</td>
+        <td>作者</td>
+        <td>发布时间</td>
+    </tr>
+</table>
+
+<h1 id="rmsg"></h1>
+
+<div>
+    <span onclick="mypage(1)">首页</span> <span onclick="mypage(2)">上一页</span>
+    <span onclick="mypage(3)">下一页</span> <span onclick="mypage(4)">最后一页</span>
+</div>
+</body>
+</html>

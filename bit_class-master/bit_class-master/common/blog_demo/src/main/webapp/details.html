@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>详情页</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split("=");
+                if (pair[0] == variable) {
+                    return pair[1];
+                }
+            }
+            return (false);
+        }
+
+        jQuery(function () {
+            var id = getQueryVariable("id");
+            // 从接口中读取到信息并显示
+            jQuery.getJSON("details", {"id": id}, function (result) {
+                if (result != null) {
+                    jQuery("#tit").html("标题:" + result.title);
+                    jQuery("#contDiv").html(result.content);
+                    jQuery("#cspan").html(result.createtime);
+                    jQuery("#uspan").html(result.uid);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<h1 id="tit">标题:</h1>
+<hr>
+<div id="contDiv" style="height: 500px;">
+    我是正文~
+</div>
+<HR>
+<a href="javascript:history.go(-1);">返回列表</a>
+<div id="othDiv" style="text-align: right;">
+    发布时间:<span id="cspan"></span> &nbsp; 作者:<span id="uspan"></span>
+</div>
+</body>
+</html>
