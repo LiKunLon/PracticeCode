@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人文章添加页</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        function mysub() {
+            var title = jQuery("#title");
+            var desc = jQuery("#desc");
+            var content = jQuery("#content");
+            if (title.val().trim() == "") {
+                alert("请先输入标题!");
+                title.focus();
+                return false;
+            }
+            if (desc.val().trim() == "") {
+                alert("请先输入简介!");
+                desc.focus();
+                return false;
+            }
+            if (content.val().trim() == "") {
+                alert("请先输入正文!");
+                content.focus();
+                return false;
+            }
+            jQuery.getJSON("addart", {
+                "title": title.val().trim(),
+                "desc": desc.val().trim(),
+                "content": content.val().trim()
+            }, function (result) {
+                if (result != null && result.succ == 1) {
+                    alert("添加成功!");
+                } else {
+                    alert("操作失败:" + result.msg);
+                    window.location = "login.html";
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<h1>文章添加页</h1>
+<div style="margin-top: 50px;margin-left: 20px;">
+    标题:<input id="title" type="text"></p>
+    简介:<br><textarea id="desc" style="width: 400px;height: 200px;"></textarea></p>
+    正文:<br><textarea id="content" style="width: 600px;height: 400px;"></textarea></p>
+    <input type="button" value=" 提 交 " onclick="mysub()">
+    <p></p>
+    <a href="main.html">返回主页面</a>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个人文章列表页</title>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        function del(id) {
+            if (confirm("确认删除吗?")) {
+                jQuery.getJSON("delart", {"id": id}, function (result) {
+                    if (result != null && result.succ == 1) {
+                        alert("删除成功!")
+                        // 刷新当前页面
+                        window.location = window.location;
+                    } else {
+                        alert("操作失败:" + result.msg);
+                    }
+                });
+            }
+        }
+
+        jQuery(function () {
+            jQuery.getJSON("artlist", {}, function (result) {
+                var html = "";
+                if (result != null && result.succ == 1) {
+                    for (var i = 0; i < result.list.length; i++) {
+                        html += "<tr>\n" +
+                            "        <td>" + result.list[i].id + "</td>\n" +
+                            "        <td><a href='details.html?id=" + result.list[i].id
+                            + "'>" + result.list[i].title + "</a></td>\n" +
+                            "        <td>" + result.list[i].desc + "</td>\n" +
+                            "        <td>" + result.list[i].uid + "</td>\n" +
+                            "        <td>" + result.list[i].createtime + "</td>\n" +
+                            "        <td onclick='del(" + result.list[i].id + ")'>删除</td>\n" +
+                            "    </tr>";
+                    }
+                    jQuery("#listTab").append(html);
+                } else {
+                    alert("查询失败:" + result.msg);
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+<h1>发布文章管理</h1>
+<div style="margin-top: 50px;margin-left: 20px;">
+    <table id="listTab" border="1" cellspacing="0" width="80%">
+        <tr>
+            <td>序号</td>
+            <td>标题</td>
+            <td>简介</td>
+            <td>作者</td>
+            <td>发布时间</td>
+            <td>操作</td>
+        </tr>
+    </table>
+    <p></p>
+    <a href="main.html">返回主页面</a>
+</div>
+</body>
+</html>
