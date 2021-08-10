@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算</title>
+    <style>
+        input{
+            margin-bottom:  20px;
+        }
+    </style>
+    <script src="js/jquery-1.9.1.min.js"></script>
+    <script>
+        function mysub(ctype) {
+            jQuery.getJSON("calc",
+                {"ctype":ctype,
+                    "num1":jQuery("#num1").val().trim(),
+                    "num2":jQuery("#num2").val().trim()},
+                function (result) {
+                    console.log(result);
+                    jQuery("#result").html("结果为："+result.result);
+                });
+        }
+    </script>
+</head>
+<body>
+<div >
+    数字1：<input type="text" id="num1"><br>
+    数字2：<input type="text" id="num2"><br>
+    <input value=" + " type="button" onclick="mysub('+')">
+    <input value=" - " type="button" onclick="mysub('-')">
+</div>
+<h3 id="result"><h3>
+</body>
+</html>
