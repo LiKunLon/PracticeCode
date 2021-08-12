@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>我的页面</title>
+        <script>
+            var i = 10;
+            i= 2;
+            // ... 伪代码，中间n次操作，导致我不清楚，当前 i 等于
+            // alert(i);
+            console.log("我是i:"+i);
+           
+
+
+            // for(var i=0;i<10;i++){
+            //     document.write("<h1>我是标签"+i+"</h1>");
+            // }
+
+            // function myck(type){
+            //     if(type==1){
+            //        alert('提交成功');
+            //     }else if(type==2){
+            //        alert('清空成功');  
+            //     }
+            // } 
+            
+            function myck(type){
+                if(type==1){
+                    var username = document.getElementById("username").value;
+                    // todo:后面实现去空格
+                    if(username==""){
+                        alert("请输入用户名");
+                        // 终止执行
+                        return false;
+                    }else{
+                        alert("提交成功");
+                    }
+                }else if(type==3){
+                    // document.getElementById("div1").innerHTML =
+                    //     "<strong>新</strong>用户注册";
+
+                    document.getElementById("div1").innerText =
+                        "<strong>新</strong>用户注册";
+
+                }else if(type==4){
+                    document.getElementById("username").value ="";
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+
+        <div id="div1">
+            用户注册
+        </div>
+
+        用户名：<input id="username" type="text">
+        <p></p>
+        <input type="button" onclick="myck(1)" value=" 提 交 ">
+        <input type="button" onclick="myck(2)" value=" 清 空 ">
+        <input type="button" onclick="myck(3)" value=" 改变内容 ">
+        <input type="button" onclick="myck(4)" value=" 设置文本框 ">
+    </body>
+</html>

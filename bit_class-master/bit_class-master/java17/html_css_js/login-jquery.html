@@ -1,0 +1,68 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>登录页面</title>
+        <!-- 1.引用外部js——jquery -->
+        <script src="jquery-1.9.1.min.js"></script>
+        <!-- 2.使用 script 调用jquery -->
+        <script>
+            function myck(type){
+                var input_username = jQuery("#username");
+                var input_pwd = jQuery("#pwd");
+                // var input_username2 = document.getElementById("username");
+                if(type==1){
+                    // 提交，非空效验
+                    if(input_username.val().trim()==""){
+                        alert("请先输入用户名！");
+                        // 设置光标到当前输入框
+                        input_username.focus();
+                        // 终止代码执行
+                        return false;
+                    }
+                    if(input_pwd.val().trim()==""){
+                        alert("请先输入密码！");
+                        // 设置光标到当前输入框
+                        input_pwd.focus();
+                        // 终止代码执行
+                        return false;
+                    }
+                    // 伪代码【后面补充】
+                    alert("登录成功");
+                }else if(type==2){
+                    if(confirm("是否清空数据？")){
+                        // 清空
+                        input_username.val("");  // input_username2.value="";
+                        input_pwd.val(""); 
+                    }
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div style="margin-top: 100px;margin-left: 500px;">
+           <span style="font-size: 60px;">登录</span>     
+        </div>
+        <div>
+            <div class="innerDiv">
+                用户名：<input id="username" type="text" placeholder="请输入用户名"> 
+            </div>
+        </div>
+        <div>
+           <div class="innerDiv">
+            &nbsp;密&nbsp;&nbsp;码：<input id="pwd" type="password" placeholder="请输入密码">
+          </div>  
+        </div>
+        <div>
+           <div style="margin-left: 482px;" class="innerDiv">
+                <input type="button" onclick="myck(1)" value="提 交">
+                <input type="button" onclick="myck(2)" value="清 空">
+           </div> 
+        </div>
+    </body>
+    <style>
+        .innerDiv{
+            margin-left: 420px;
+            margin-top: 20px;
+        }
+    </style>
+</html>
