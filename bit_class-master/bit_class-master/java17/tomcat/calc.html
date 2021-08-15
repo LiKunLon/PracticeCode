@@ -1,0 +1,63 @@
+<htm>
+    <head>
+        <meta charset="utf-8">
+        <title>我的计算器</title>
+        <!--  1.引入jquery-->
+        <script src="jquery-1.9.1.min.js"></script>
+        <script>
+            function myck(type) {
+                var num1 = jQuery("#num1");
+                var num2 = jQuery("#num2");
+                if(type==4){
+                    // 清空操作
+                    if(confirm("确认清空吗？")){
+                        num1.val("");
+                        num2.val("");
+                        jQuery("#resultDiv").html("");
+                    }
+                    return false;
+                }
+                // 非空效验
+                if(num1.val()==""){
+                    alert("请先输入数字1");
+                    return false;
+                }
+                if(num2.val()==""){
+                    alert("请先输入数字2");
+                    return false;
+                }
+                var total=0;
+                if(type==1){
+                    // 相加操作
+                   total = parseInt(num1.val())+parseInt(num2.val());
+                   // document.getElementById("resultDiv").innerText="";
+                   // document.getElementById("resultDiv").innerHtml="";
+                }else if(type==2){
+                    // 相减操作
+                    total = parseInt(num1.val()) - parseInt(num2.val());
+
+                }else if(type==3){
+                    // 相乘操作
+                    total = parseInt(num1.val()) * parseInt(num2.val());
+
+                }
+                jQuery("#resultDiv").html("最终执行结果："+total);
+            }
+        </script>
+    </head>
+    <body>
+        <div style="text-align:center;">
+            <h1 style="margin-top: 60px;">计算器</h1>
+            数字1：<input id="num1" type="number"><p></p>
+            数字2：<input id="num2" type="number"><p></p>
+            <input type="button" value=" 相加 " onclick="myck(1)">
+            <input type="button" value=" 相减 " onclick="myck(2)">
+            <input type="button" value=" 相乘 " onclick="myck(3)">
+            <input type="button" value=" 清空 " onclick="myck(4)">
+            <p></p>
+            <div style="font-size: 40px;" id="resultDiv">
+
+            </div>
+        </div>
+    </body>
+</htm>
